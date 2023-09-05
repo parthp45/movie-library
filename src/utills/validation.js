@@ -1,12 +1,13 @@
 import { EMAIL_REGEX, PASSWORD_REGEX } from "./constants";
 
 const validate = (email, password) => {
-  if (!email.match(EMAIL_REGEX)) {
-    return "Email not Valid";
+  if (!EMAIL_REGEX.test(email)) {
+    return "Email address is not valid";
   }
-  if (!password.match(PASSWORD_REGEX)) {
+  if (!PASSWORD_REGEX.test(password)) {
     return "Invalid Password";
   }
+
   return null;
 };
 

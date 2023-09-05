@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "./styles.module.css";
+import Baselayout from "../Baselayout";
 
 const MovieInfo = () => {
-  return <div>MovieInfo</div>;
+  return <Baselayout>MovieInfo</Baselayout>;
 };
 
 export default MovieInfo;

@@ -1,3 +1,11 @@
-.App {
+.app {
   font-family: var(--jk-sans);
+}
+.ant-message {
+  font-family: var(--jk-sans);
+  font-weight: 600;
+}
+.ant-message .ant-message-notice-content {
+  background: #272727;
+  color: white;
 }

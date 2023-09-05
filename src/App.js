@@ -1,8 +1,10 @@
+import { Provider } from "react-redux";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./App.css";
-import MovieList from "./components/MovieList";
-import MovieInfo from "./components/MovieInfo";
 import Home from "./components/Home";
+import MovieInfo from "./components/MovieInfo";
+import MovieList from "./components/MovieList";
+import appStore from "./utills/appStore";
 
 function App() {
   const appRouter = createBrowserRouter([
@@ -20,8 +22,10 @@ function App() {
     },
   ]);
   return (
-    <div className="App">
-      <RouterProvider router={appRouter} />
+    <div className="app">
+      <Provider store={appStore}>
+        <RouterProvider router={appRouter} />
+      </Provider>
     </div>
   );
 }
