@@ -5,7 +5,7 @@ const validate = (email, password) => {
     return "Email address is not valid";
   }
   if (!PASSWORD_REGEX.test(password)) {
-    return "Invalid Password";
+    return "Invalid Password! Password must contain capital,lowercase and special characters";
   }
 
   return null;
