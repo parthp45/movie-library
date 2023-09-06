@@ -1,10 +1,18 @@
 import React from "react";
-import styles from "./styles.module.css";
-import Baselayout from "../Baselayout";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { BG_IMG } from "../../utills/constants";
 import Authform from "../AuthForm";
+import Baselayout from "../Baselayout";
+import styles from "./styles.module.css";
 
 const Home = () => {
+  const userData = useSelector((state) => state.user);
+  const navigate = useNavigate();
+
+  if (userData?.uid) {
+    navigate("/browse");
+  }
   return (
     <Baselayout>
       <div className="">

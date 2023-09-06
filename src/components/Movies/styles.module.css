@@ -1,0 +1,20 @@
+.videoWrapper {
+  margin-top: -80px;
+}
+.cardsWrapper {
+  margin-top: -20%;
+}
+.spinWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+@media (max-width: 36em) {
+  .cardsWrapper {
+    margin-top: unset;
+  }
+  .videoWrapper {
+    margin-top: 0;
+  }
+}

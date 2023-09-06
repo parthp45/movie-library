@@ -19,3 +19,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+::-moz-selection {
+  background: #e50914;
+}
+
+::selection {
+  background: #e50914;
+}

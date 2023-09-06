@@ -3,10 +3,17 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Home";
 import MovieInfo from "./components/MovieInfo";
-import MovieList from "./components/MovieList";
 import appStore from "./utills/appStore";
+import Offline from "./components/Offline";
+import useOnlineStatus from "./hooks/useOnlineStatus";
+import Movies from "./components/Movies";
 
 function App() {
+  const onlineStatus = useOnlineStatus();
+
+  if (!onlineStatus) {
+    return <Offline />;
+  }
   const appRouter = createBrowserRouter([
     {
       path: "/",
@@ -14,7 +21,7 @@ function App() {
     },
     {
       path: "/browse",
-      element: <MovieList />,
+      element: <Movies />,
     },
     {
       path: "/movie/:id",

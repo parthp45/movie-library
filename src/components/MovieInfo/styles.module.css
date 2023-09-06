@@ -1,0 +1,58 @@
+.about {
+  font-size: 22px;
+}
+
+.rating {
+  display: inline-grid;
+  width: 250px;
+  height: 250px;
+  border-radius: 50pc;
+  place-content: center;
+  font-size: 3rem;
+  background-image: linear-gradient(#000, #000),
+    linear-gradient(90deg, #ff1f00, #977220);
+  background-clip: padding-box, border-box;
+  background-origin: border-box;
+  border: 4px double transparent;
+}
+.genre {
+  display: inline-flex;
+  gap: 1rem;
+}
+.genreName {
+  padding: 0.8rem;
+  border-radius: 50px;
+  border: 1px solid #ffa301;
+}
+.spinWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.imgWrapper {
+  width: 300px;
+  aspect-ratio: 1/1;
+}
+@media (max-width: 36em) {
+  .video {
+    width: 100%;
+    height: 100%;
+  }
+  .content {
+    width: 100%;
+    margin-left: auto;
+    order: 3;
+  }
+  .textCenter {
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+  }
+  .imgWrapper {
+    order: 1;
+  }
+  .rating {
+    order: 2;
+  }
+}

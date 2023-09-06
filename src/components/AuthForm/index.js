@@ -9,6 +9,7 @@ import validate from "../../utills/validation";
 import styles from "./styles.module.css";
 import { addUser } from "../../utills/userSlice";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const Authform = () => {
   const [message, setMessage] = useState("");
   const [form, setForm] = useState(true);
@@ -19,6 +20,7 @@ const Authform = () => {
   });
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -36,6 +38,7 @@ const Authform = () => {
             .then(() => {
               const { uid, displayName, email } = auth.currentUser;
               dispatch(addUser({ uid, displayName, email }));
+              navigate("/browse");
             })
             .catch((error) => {
               setMessage(error);
@@ -57,7 +60,9 @@ const Authform = () => {
     } else {
       setLoading(true);
       signInWithEmailAndPassword(auth, formData.email, formData.password)
-        .then((userCredential) => {})
+        .then((userCredential) => {
+          navigate("/browse");
+        })
         .catch((error) => {
           const errorCode = error.code;
           if (errorCode === "auth/wrong-password") {
