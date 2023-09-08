@@ -26,7 +26,7 @@ const MovieInfo = () => {
 
   return (
     <Baselayout>
-      <div>
+      <div className={styles.videoWrapper}>
         <iframe
           className={`w-full aspect-video ${styles.video}`}
           src={`https://www.youtube.com/embed/${videoData?.key}?autoplay=1&mute=1&rel=0&controls=1&showinfo=0&loop=1&iv_load_policy=3&playlist=${videoData?.key}`}
