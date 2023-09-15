@@ -9,3 +9,6 @@
   background: #272727;
   color: white;
 }
+a.ytp-youtube-button.ytp-button.yt-uix-sessionlink {
+  display: none;
+}

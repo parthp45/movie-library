@@ -24,12 +24,13 @@ const MovieInfo = () => {
       </div>
     );
 
+  console.log(videoData);
   return (
     <Baselayout>
       <div className={styles.videoWrapper}>
         <iframe
           className={`w-full aspect-video ${styles.video}`}
-          src={`https://www.youtube.com/embed/${videoData?.key}?autoplay=1&mute=1&rel=0&controls=1&showinfo=0&loop=1&iv_load_policy=3&playlist=${videoData?.key}`}
+          src={`https://www.youtube.com/embed/${videoData?.key}?autoplay=1&mute=1&rel=0&controls=1&showinfo=0&loop=1&iv_load_policy=3&playlist=${videoData?.key}&modestbranding=0"`}
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
@@ -44,7 +45,7 @@ const MovieInfo = () => {
             alt={movieData?.title}
             className={`shadow-md rounded-md ${styles.imgWrapper}`}
           />
-          <div className={`ml-4 w-2/4 ${styles.content}`}>
+          <div className={`ml-4  ${styles.content}`}>
             <h1 className="text-white font-semibold text-5xl  ">
               {movieData?.title}
             </h1>
@@ -76,7 +77,7 @@ const MovieInfo = () => {
           <div className={`${styles.rating} gap-1`}>
             {Math.floor(movieData?.vote_average) * 10}%
             <div className={`inline-grid place-content-center`}>
-              <ThumbsUp size={35} color="#977220" weight="duotone" />
+              <ThumbsUp size={35} color="#977220" weight="fill" />
             </div>
           </div>
         </div>

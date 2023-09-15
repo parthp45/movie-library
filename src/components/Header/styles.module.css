@@ -1,3 +1,7 @@
+.header {
+  box-shadow: 1px 2px 0px 1px #440004;
+}
+
 .popover :global(.ant-popover-inner-content) {
   font-family: var(--jk-sans);
   background: #222222;

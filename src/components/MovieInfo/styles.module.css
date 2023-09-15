@@ -37,6 +37,12 @@
 .videoWrapper {
   margin-top: -70px;
 }
+iframe a.ytp-youtube-button.ytp-button.yt-uix-sessionlink {
+  display: none;
+}
+.content {
+  width: 50%;
+}
 @media (max-width: 36em) {
   .video {
     width: 100%;
@@ -48,7 +54,6 @@
     order: 3;
   }
   .textCenter {
-    text-align: center;
     display: inline-block;
     width: 100%;
   }

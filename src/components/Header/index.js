@@ -59,7 +59,7 @@ const Header = () => {
     );
   };
   return (
-    <header className="sticky top-0 z-50">
+    <header className={`sticky top-0 z-50 ${styles.header}`}>
       <div className="flex gap-4 items-center p-5 shadow-lg bg-slate-950">
         <div className="flex gap-5 ">
           <Link to={"/"} className="text-white" preventScrollReset={true}>
