@@ -1,6 +1,8 @@
 .movieListWrapper {
   z-index: 10;
   position: relative;
-  background: black;
   width: 100%;
+}
+.movieListWrapper.bgDark {
+  background-color: #212121;
 }

@@ -1,4 +1,4 @@
-import { Star } from "phosphor-react";
+import { FilmSlate, Star } from "phosphor-react";
 import React from "react";
 import { Link } from "react-router-dom";
 import { MOVIE_IMG_BASE_URL } from "../../utills/constants";
@@ -9,11 +9,21 @@ const MovieCard = ({ movie }) => {
     <div
       className={`${styles.wrapper}  shadow-sm shadow-gray-500 rounded-md p-2`}
     >
-      <img
-        src={`${MOVIE_IMG_BASE_URL}/${movie?.poster_path}`}
-        alt={movie.title}
-        className={`${styles.movieImg} w-full rounded-md`}
-      />
+      {
+        <>
+          {movie?.poster_path ? (
+            <img
+              src={`${MOVIE_IMG_BASE_URL}/${movie?.poster_path}`}
+              alt={movie.title}
+              className={`${styles.movieImg} w-full rounded-md`}
+            />
+          ) : (
+            <div className={styles.defaultBg}>
+              <FilmSlate size={210} color="#fdc326" weight="duotone" />
+            </div>
+          )}
+        </>
+      }
 
       <h2 className="text-white text-md font-medium pt-2">{movie?.title}</h2>
       <p className="text-red-50 font-medium flex items-center gap-2 py-2">

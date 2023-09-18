@@ -1,21 +1,33 @@
-import React from "react";
-import Baselayout from "../Baselayout";
-import { useParams } from "react-router-dom";
-import useVideoInfo from "../../hooks/useVideoInfo";
-import { useSelector } from "react-redux";
-import useMovieInfo from "../../hooks/useMovieInfo";
-import { MOVIE_IMG_BASE_URL } from "../../utills/constants";
-import styles from "./styles.module.css";
-import { ThumbsUp } from "phosphor-react";
 import { Spin } from "antd";
+import { FilmSlate, ThumbsUp } from "phosphor-react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import useMovieInfo from "../../hooks/useMovieInfo";
+import useVideoInfo from "../../hooks/useVideoInfo";
+import { MOVIE_IMG_BASE_URL } from "../../utills/constants";
+import Baselayout from "../Baselayout";
+import styles from "./styles.module.css";
+import { toggleSearchModal } from "../../utills/headerSlice";
+import { addMovieByName } from "../../utills/movieSlice";
 
 const MovieInfo = () => {
   let { id } = useParams();
   useVideoInfo(id);
   useMovieInfo(id);
+  const dispatch = useDispatch();
 
   const videoData = useSelector((state) => state.videoInfo);
   const movieData = useSelector((state) => state.movies.movieInfo);
+
+  useEffect(() => {
+    handleClose();
+  }, []);
+
+  const handleClose = () => {
+    dispatch(toggleSearchModal(false));
+    dispatch(addMovieByName({}));
+  };
 
   if (!videoData || !movieData)
     return (
@@ -24,7 +36,6 @@ const MovieInfo = () => {
       </div>
     );
 
-  console.log(videoData);
   return (
     <Baselayout>
       <div className={styles.videoWrapper}>
@@ -40,11 +51,21 @@ const MovieInfo = () => {
         <div
           className={`flex p-4 gap-16 flex-wrap justify-center ${styles.wrapper}`}
         >
-          <img
-            src={`${MOVIE_IMG_BASE_URL}/${movieData?.backdrop_path}`}
-            alt={movieData?.title}
-            className={`shadow-md rounded-md ${styles.imgWrapper}`}
-          />
+          {
+            <>
+              {movieData?.backdrop_path ? (
+                <img
+                  src={`${MOVIE_IMG_BASE_URL}/${movieData?.backdrop_path}`}
+                  alt={movieData?.title}
+                  className={`shadow-md rounded-md ${styles.imgWrapper}`}
+                />
+              ) : (
+                <div className={styles.defaultBg}>
+                  <FilmSlate size={210} color="#fdc326" weight="duotone" />
+                </div>
+              )}
+            </>
+          }
           <div className={`ml-4  ${styles.content}`}>
             <h1 className="text-white font-semibold text-5xl  ">
               {movieData?.title}

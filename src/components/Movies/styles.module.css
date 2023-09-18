@@ -10,6 +10,71 @@
   align-items: center;
   height: 100vh;
 }
+.modalWrapper {
+  :global(.ant-modal-content) {
+    border-radius: 22px;
+    font-family: var(--jk-sans);
+  }
+  :global(.ant-modal-body) {
+    padding: 0;
+  }
+  :global(.ant-modal-close-x) {
+    color: #a3eff0;
+  }
+}
+.bg {
+  background-color: black;
+}
+.searchContentWrapper {
+  background-color: #212121;
+}
+.inputWrapper {
+  margin: 0rem auto;
+  width: 80%;
+  border-radius: 50px;
+  background: rgb(0, 0, 0);
+  padding: 0 0 0 0.625rem;
+}
+.moviesWrapper {
+  height: 80vh;
+  overflow-y: scroll;
+  padding-bottom: 2rem;
+  background: #212121;
+}
+.moviesWrapper .cardsWrapper {
+  margin-top: 0;
+  background-color: #212121;
+}
+.moviesWrapper .movieListWrapper {
+  background-color: #212121;
+}
+.input {
+  border-radius: 50px;
+  width: 80%;
+  margin-right: auto;
+  color: #d0484f;
+}
+.input:focus {
+  outline: none;
+}
+.searchBtn {
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8a8a8a;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000;
+}
 @media (max-width: 36em) {
   .cardsWrapper {
     margin-top: unset;

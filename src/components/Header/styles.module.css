@@ -1,7 +1,29 @@
 .header {
   box-shadow: 1px 2px 0px 1px #440004;
 }
+.searchWrapper {
+  background: #212121;
+  width: 50%;
+  position: relative;
+  left: 25%;
+  padding: 0.625rem 1.25rem;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.search {
+  display: flex;
+}
+.searchBtn {
+  display: block;
+}
+.text {
+}
+.placeholder {
+  color: #d0484f;
+}
 
+.textWrapper {
+}
 .popover :global(.ant-popover-inner-content) {
   font-family: var(--jk-sans);
   background: #222222;
@@ -10,4 +32,14 @@
 }
 .popover :global(.ant-popover-inner) {
   background: #222222;
+}
+
+@media (max-width: 36em) {
+  .searchWrapper {
+    width: 100%;
+    left: auto;
+  }
+  .search {
+    justify-content: center;
+  }
 }

@@ -6,6 +6,12 @@
   width: 100%;
   height: auto;
 }
+.defaultBg {
+  width: 100%;
+  height: 351px;
+  display: grid;
+  place-content: center;
+}
 .link a:hover {
   color: white;
 }
