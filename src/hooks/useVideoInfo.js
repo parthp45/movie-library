@@ -22,9 +22,7 @@ const useVideoInfo = (videoId) => {
     dispatch(addVideoInfoById(trailerData));
   };
   useEffect(() => {
-    if (!videoData) {
-      getVideoInfoById();
-    }
+    getVideoInfoById();
   }, []);
 };
 export default useVideoInfo;
