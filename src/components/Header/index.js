@@ -74,7 +74,7 @@ const Header = () => {
             </span>
           </Link>
         </div>
-        {!location.pathname.includes("movie") && (
+        {!location.pathname.includes("movie") && userData?.uid && (
           <div className="ml-auto w-full">
             <div
               className={`flex items-center gap-2 ${styles.searchWrapper}`}
