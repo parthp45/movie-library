@@ -26,6 +26,7 @@ const MovieInfo = () => {
 
   const handleClose = () => {
     dispatch(toggleSearchModal(false));
+    dispatch(addMovieByName({}));
   };
 
   if (!videoData || !movieData)
