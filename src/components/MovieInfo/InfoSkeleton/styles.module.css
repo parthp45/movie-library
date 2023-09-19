@@ -1,0 +1,15 @@
+.wrapper {
+  overflow-x: hidden;
+  background-color: black;
+}
+.contentWrapper {
+  margin-top: 1rem;
+  display: flex;
+  gap: 4rem;
+  justify-content: space-evenly;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

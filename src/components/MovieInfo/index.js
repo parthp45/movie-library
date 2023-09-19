@@ -1,4 +1,3 @@
-import { Spin } from "antd";
 import { FilmSlate, ThumbsUp } from "phosphor-react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,10 +5,11 @@ import { useParams } from "react-router-dom";
 import useMovieInfo from "../../hooks/useMovieInfo";
 import useVideoInfo from "../../hooks/useVideoInfo";
 import { MOVIE_IMG_BASE_URL } from "../../utills/constants";
-import Baselayout from "../Baselayout";
-import styles from "./styles.module.css";
 import { toggleSearchModal } from "../../utills/headerSlice";
 import { addMovieByName } from "../../utills/movieSlice";
+import Baselayout from "../Baselayout";
+import InfoSkeleton from "./InfoSkeleton";
+import styles from "./styles.module.css";
 
 const MovieInfo = () => {
   let { id } = useParams();
@@ -29,12 +29,7 @@ const MovieInfo = () => {
     dispatch(addMovieByName({}));
   };
 
-  if (!videoData || !movieData)
-    return (
-      <div className={styles.spinWrapper}>
-        <Spin size="large" />
-      </div>
-    );
+  if (!videoData || !movieData) return <InfoSkeleton />;
 
   return (
     <Baselayout>

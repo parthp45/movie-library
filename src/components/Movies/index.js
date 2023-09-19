@@ -19,6 +19,7 @@ import Baselayout from "../Baselayout";
 import MovieContainer from "../MovieContainer";
 import MovieList from "../MovieList";
 import styles from "./styles.module.css";
+import Skeleton from "../Skeleton";
 const Movies = () => {
   useMovieList();
   usePopularList();
@@ -61,11 +62,7 @@ const Movies = () => {
   }, []);
 
   if (!nowPlayingMovies || !popularMovies || !topRatedMovies || !upcomingList)
-    return (
-      <div className={styles.spinWrapper}>
-        <Spin size="large" />
-      </div>
-    );
+    return <Skeleton />;
 
   const handleClose = () => {
     dispatch(toggleSearchModal(false));
@@ -95,6 +92,7 @@ const Movies = () => {
               value={movie}
               onChange={(e) => setMovie(e.target.value)}
               placeholder="Search your movies"
+              autoFocus
             />
             <button
               className={`rounded-3xl  py-3 px-5 text-white ${styles.searchBtn}`}
@@ -133,65 +131,6 @@ const Movies = () => {
         )}
 
         <div className={` pb-4 ${styles.bg}`}>
-          {/* {searchedMovie?.results.length > 0 ? (
-            <>
-              {searchedMovie?.results?.length > 0 && (
-                <div className={`${styles.cardsWrapper}`}>
-                  <MovieList movies={nowPlayingMovies?.results} />
-                </div>
-              )}
-            </>
-          ) : (
-            <div>
-              {nowPlayingMovies?.results?.length > 0 && (
-                <div className={`${styles.cardsWrapper}`}>
-                  <MovieList movies={nowPlayingMovies?.results} />
-                </div>
-              )}
-              {popularMovies?.results?.length > 0 && (
-                <>
-                  <h1
-                    className="text-xl text-white font-bold  my-10 p-4 bg-[#1c1c1c] m-9 flex items-center cursor-pointer gap-3"
-                    onClick={() => handleClick("popular")}
-                  >
-                    {"Popular"}
-                    <TrendUp size={20} color="#ffe400" weight="fill" />
-                  </h1>
-                  {open.popular && (
-                    <MovieList movies={popularMovies?.results} />
-                  )}
-                </>
-              )}
-              {topRatedMovies?.results?.length > 0 && (
-                <>
-                  <h1
-                    className="text-xl text-white font-bold  my-10 p-4 bg-[#1c1c1c] m-9 flex  cursor-pointer items-center gap-3"
-                    onClick={() => handleClick("topRated")}
-                  >
-                    {"Top rated"}
-                    <StarFour size={20} color="#ffe400" weight="fill" />
-                  </h1>
-                  {open.topRated && (
-                    <MovieList movies={topRatedMovies?.results} />
-                  )}
-                </>
-              )}
-              {upcomingList?.results?.length > 0 && (
-                <>
-                  <h1
-                    className="text-xl text-white font-bold  my-10 p-4 bg-[#1c1c1c] m-9 flex  cursor-pointer items-center gap-3 pb-4"
-                    onClick={() => handleClick("upcoming")}
-                  >
-                    {"Upcoming"}
-                    <Hourglass size={20} color="#ffe400" weight="fill" />
-                  </h1>
-                  {open.upcoming && (
-                    <MovieList movies={upcomingList?.results} />
-                  )}
-                </>
-              )}
-            </div>
-          )} */}
           <div>
             {nowPlayingMovies?.results?.length > 0 && (
               <div className={`${styles.cardsWrapper}`}>
@@ -242,9 +181,7 @@ const Movies = () => {
           open={modalOpen}
           onCancel={handleClose}
           footer={null}
-          // closeIcon={<X size={20} weight="light" />}
           className={styles.modalWrapper}
-          // centered
           width={"80%"}
         >
           <SearchModal />
