@@ -1,11 +1,10 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { options } from "../utills/apiOptions";
 import { addVideoInfoById } from "../utills/videoSlice";
 
 const useVideoInfo = (videoId) => {
   const dispatch = useDispatch();
-  const videoData = useSelector((state) => state.videoInfo);
 
   const getVideoInfoById = async () => {
     const res = await fetch(
@@ -19,6 +18,7 @@ const useVideoInfo = (videoId) => {
     const trailerData = filterData?.length
       ? filterData[0]
       : response?.results[0];
+
     dispatch(addVideoInfoById(trailerData));
   };
   useEffect(() => {

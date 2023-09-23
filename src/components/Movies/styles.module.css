@@ -30,7 +30,7 @@
 }
 .inputWrapper {
   margin: 0rem auto;
-  width: 80%;
+  width: 90%;
   border-radius: 50px;
   background: rgb(0, 0, 0);
   padding: 0 0 0 0.625rem;
@@ -50,14 +50,34 @@
 }
 .input {
   border-radius: 50px;
-  width: 80%;
+  width: 90%;
   margin-right: auto;
   color: #d0484f;
 }
 .input:focus {
   outline: none;
 }
-.searchBtn {
+
+.recentSearchWrapper {
+  display: flex;
+  padding: 0rem 0 1rem 0;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 90%;
+  margin: 0 auto;
+}
+.recentMovie {
+  padding: 0.5rem;
+  border: 1px solid #d0484f;
+  color: #d0484f;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.recentMovie:hover {
+  background-color: #b30000;
+  color: white;
 }
 ::-webkit-scrollbar {
   width: 10px;

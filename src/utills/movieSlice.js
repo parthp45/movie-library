@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const movieSlice = createSlice({
   name: "movies",
@@ -9,6 +9,7 @@ const movieSlice = createSlice({
     topRatedMovies: null,
     upcomingMovies: null,
     movieByName: null,
+    recentSearch: [],
   },
 
   reducers: {
@@ -30,6 +31,16 @@ const movieSlice = createSlice({
     addMovieByName: (state, action) => {
       state.movieByName = action.payload;
     },
+    addRecentSearch: (state, action) => {
+      state.recentSearch = [...state.recentSearch, action.payload];
+    },
+    // removeRecentSearch: (state, action) => {
+    //   const res = current(state.recentSearch);
+    //   console.log(res);
+    //   const ress = res.filter((item) => item !== action.payload);
+    //   console.log(ress);
+    //   state.recentSearch = ress;
+    // },
   },
 });
 
@@ -40,5 +51,7 @@ export const {
   addTopRatedMovies,
   addUpcomingMovies,
   addMovieByName,
+  addRecentSearch,
+  removeRecentSearch,
 } = movieSlice.actions;
 export default movieSlice.reducer;

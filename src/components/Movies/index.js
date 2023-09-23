@@ -1,4 +1,4 @@
-import { Modal, Spin, message } from "antd";
+import { Modal, message } from "antd";
 import {
   Hourglass,
   KeyReturn,
@@ -13,13 +13,13 @@ import usePopularList from "../../hooks/usePopularList";
 import useTopRatedList from "../../hooks/useTopratedList";
 import useUpcomingList from "../../hooks/useUpcomingList";
 import { toggleSearchModal } from "../../utills/headerSlice";
-import { addMovieByName } from "../../utills/movieSlice";
+import { addMovieByName, addRecentSearch } from "../../utills/movieSlice";
 import searchMovieByName from "../../utills/searchMovieByName";
 import Baselayout from "../Baselayout";
 import MovieContainer from "../MovieContainer";
 import MovieList from "../MovieList";
-import styles from "./styles.module.css";
 import Skeleton from "../Skeleton";
+import styles from "./styles.module.css";
 const Movies = () => {
   useMovieList();
   usePopularList();
@@ -34,6 +34,7 @@ const Movies = () => {
   const topRatedMovies = useSelector((state) => state.movies.topRatedMovies);
   const upcomingList = useSelector((state) => state.movies.upcomingMovies);
   const searchedMovie = useSelector((state) => state.movies.movieByName);
+  const recentMovies = useSelector((state) => state.movies.recentSearch);
   const modalOpen = useSelector((state) => state.search.open);
   const [open, setOpen] = useState({
     popular: false,
@@ -71,14 +72,22 @@ const Movies = () => {
 
   const SearchModal = () => {
     const [movie, setMovie] = useState("");
+
     const handleMovieByName = async (e) => {
       e.preventDefault();
       if (!movie) {
         return message.error("Please enter a movie name");
       }
       const movies = await searchMovieByName(movie);
+      dispatch(addRecentSearch(movie));
       dispatch(addMovieByName(movies));
     };
+
+    const handleRecentSearch = async (recentMovie) => {
+      const movies = await searchMovieByName(recentMovie);
+      dispatch(addMovieByName(movies));
+    };
+
     return (
       <section className={`${styles.searchContentWrapper}`}>
         <form className={`py-7`}>
@@ -102,6 +111,21 @@ const Movies = () => {
             </button>
           </div>
         </form>
+        {recentMovies?.length > 0 && (
+          <>
+            <div className={`${styles.recentSearchWrapper}`}>
+              {[...new Set(recentMovies)]?.map((item) => (
+                <span
+                  key={item}
+                  className={`${styles.recentMovie}`}
+                  onClick={() => handleRecentSearch(item)}
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </>
+        )}
         <div className={`${styles.moviesWrapper}`}>
           {searchedMovie?.results?.length > 0 ? (
             <div className={`${styles.cardsWrapper}`}>
