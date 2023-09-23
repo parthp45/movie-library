@@ -8,10 +8,9 @@ const PASSWORD_REGEX = new RegExp(
   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
 );
 
-const MOVIE_API_KEY = "041fc2e81add52da5242d45317b6eb40";
+const MOVIE_API_KEY = process.env.REACT_APP_API_KEY;
 
-const MOVIE_ACCESS_TOKEN =
-  "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNDFmYzJlODFhZGQ1MmRhNTI0MmQ0NTMxN2I2ZWI0MCIsInN1YiI6IjY0Zjc2NGJjZjI5ZDY2MzU2M2U5ZjAxZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.8h2bLR-b9E_EIAsPqAG8a7-4fOSUF_cQ9e9lwCe2bro";
+const MOVIE_ACCESS_TOKEN = process.env.REACT_APP_ACCESS_TOKEN;
 
 const MOVIE_IMG_BASE_URL = "https://www.themoviedb.org/t/p/w220_and_h330_face";
 
