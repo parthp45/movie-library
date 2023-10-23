@@ -103,7 +103,7 @@ const Header = () => {
                 <span
                   className={`w-10 h-5 border border-transparent me-1 bg-[#742326]  text-gray-300 align-middle p-0 inline-flex justify-center items-center text-xs text-center rounded-md`}
                 >
-                  B
+                  M
                 </span>
               </div>
             </div>

@@ -1,23 +1,17 @@
-import { Modal, message } from "antd";
-import {
-  Hourglass,
-  KeyReturn,
-  MagnifyingGlass,
-  StarFour,
-  TrendUp,
-} from "phosphor-react";
-import React, { useEffect, useState } from "react";
+import { Modal } from "antd";
+import { Hourglass, StarFour, TrendUp } from "phosphor-react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useMovieList from "../../hooks/useMovieList";
 import usePopularList from "../../hooks/usePopularList";
 import useTopRatedList from "../../hooks/useTopratedList";
 import useUpcomingList from "../../hooks/useUpcomingList";
 import { toggleSearchModal } from "../../utills/headerSlice";
-import { addMovieByName, addRecentSearch } from "../../utills/movieSlice";
-import searchMovieByName from "../../utills/searchMovieByName";
+import { addMovieByName } from "../../utills/movieSlice";
 import Baselayout from "../Baselayout";
 import MovieContainer from "../MovieContainer";
 import MovieList from "../MovieList";
+import SearchModal from "../SearchModal";
 import Skeleton from "../Skeleton";
 import styles from "./styles.module.css";
 const Movies = () => {
@@ -33,8 +27,6 @@ const Movies = () => {
   const popularMovies = useSelector((state) => state.movies.popularMovies);
   const topRatedMovies = useSelector((state) => state.movies.topRatedMovies);
   const upcomingList = useSelector((state) => state.movies.upcomingMovies);
-  const searchedMovie = useSelector((state) => state.movies.movieByName);
-  const recentMovies = useSelector((state) => state.movies.recentSearch);
   const modalOpen = useSelector((state) => state.search.open);
   const [open, setOpen] = useState({
     popular: false,
@@ -50,17 +42,16 @@ const Movies = () => {
   };
 
   const keyDownhandler = (e) => {
-    if (e?.code === "KeyB" && e?.ctrlKey) {
+    if (e?.code === "KeyM" && e?.ctrlKey) {
       dispatch(toggleSearchModal(true));
     }
   };
   useEffect(() => {
     document.addEventListener("keydown", keyDownhandler);
-
     return () => {
       document.removeEventListener("keydown", keyDownhandler);
     };
-  }, []);
+  }, [modalOpen]);
 
   if (!nowPlayingMovies || !popularMovies || !topRatedMovies || !upcomingList)
     return <Skeleton />;
@@ -70,80 +61,6 @@ const Movies = () => {
     dispatch(addMovieByName({}));
   };
 
-  const SearchModal = () => {
-    const [movie, setMovie] = useState("");
-
-    const handleMovieByName = async (e) => {
-      e.preventDefault();
-      if (!movie) {
-        return message.error("Please enter a movie name");
-      }
-      const movies = await searchMovieByName(movie);
-      dispatch(addRecentSearch(movie));
-      dispatch(addMovieByName(movies));
-    };
-
-    const handleRecentSearch = async (recentMovie) => {
-      const movies = await searchMovieByName(recentMovie);
-      dispatch(addMovieByName(movies));
-    };
-
-    return (
-      <section className={`${styles.searchContentWrapper}`}>
-        <form className={`py-7`}>
-          <div
-            className={`relative flex justify-center items-center ${styles.inputWrapper}`}
-          >
-            <MagnifyingGlass size={20} color="#d0484f" weight="duotone" />
-            <input
-              type="text"
-              className={`p-3 bg-transparent w-full ${styles.input}`}
-              value={movie}
-              onChange={(e) => setMovie(e.target.value)}
-              placeholder="Search your movies"
-              autoFocus
-            />
-            <button
-              className={`rounded-3xl  py-3 px-5 text-white ${styles.searchBtn}`}
-              onClick={(e) => handleMovieByName(e)}
-            >
-              <KeyReturn size={20} color="#d0484f" weight="duotone" />
-            </button>
-          </div>
-        </form>
-        {recentMovies?.length > 0 && (
-          <>
-            <div className={`${styles.recentSearchWrapper}`}>
-              {[...new Set(recentMovies)]?.map((item) => (
-                <span
-                  key={item}
-                  className={`${styles.recentMovie}`}
-                  onClick={() => handleRecentSearch(item)}
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </>
-        )}
-        <div className={`${styles.moviesWrapper}`}>
-          {searchedMovie?.results?.length > 0 ? (
-            <div className={`${styles.cardsWrapper}`}>
-              <MovieList movies={searchedMovie?.results} />
-            </div>
-          ) : (
-            searchedMovie?.results?.length === 0 && (
-              <div>
-                <h2 className={`text-5xl text-center text-white`}>
-                  No results found
-                </h2>
-              </div>
-            )
-          )}
-        </div>
-      </section>
-    );
-  };
   return (
     <Baselayout>
       <div className={`${styles.videoWrapper}`}>
