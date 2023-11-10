@@ -36,7 +36,6 @@ const Movies = () => {
 
   const handleClick = (name) => {
     setOpen({
-      ...open,
       [name]: !open[name],
     });
   };
