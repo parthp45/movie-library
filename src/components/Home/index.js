@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { BG_IMG } from "../../utills/constants";
 import Authform from "../AuthForm";
 import Baselayout from "../Baselayout";
 import styles from "./styles.module.css";
@@ -15,8 +14,13 @@ const Home = () => {
   }
   return (
     <Baselayout>
-      <div className="">
-        <img src={BG_IMG} alt="bg" className={styles.bg} />
+      <div className={styles.bgWrapper}>
+        <div className={styles.cube}></div>
+        <div className={styles.cube}></div>
+        <div className={styles.cube}></div>
+        <div className={styles.cube}></div>
+        <div className={styles.cube}></div>
+        <div className={styles.cube}></div>
         <div className={`  absolute  ${styles.fromWrapper}`}>
           <Authform />
         </div>
