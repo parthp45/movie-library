@@ -15,12 +15,11 @@ const Home = () => {
   return (
     <Baselayout>
       <div className={styles.bgWrapper}>
-        <div className={styles.cube}></div>
-        <div className={styles.cube}></div>
-        <div className={styles.cube}></div>
-        <div className={styles.cube}></div>
-        <div className={styles.cube}></div>
-        <div className={styles.cube}></div>
+        {Array(6)
+          .fill(1)
+          .map((item) => (
+            <div className={styles.cube} key={item}></div>
+          ))}
         <div className={`  absolute  ${styles.fromWrapper}`}>
           <Authform />
         </div>

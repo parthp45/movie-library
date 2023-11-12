@@ -122,7 +122,7 @@ const Movies = () => {
           onCancel={handleClose}
           footer={null}
           className={styles.modalWrapper}
-          width={"80%"}
+          width={"100%"}
         >
           <SearchModal />
         </Modal>

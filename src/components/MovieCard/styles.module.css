@@ -1,6 +1,10 @@
 .wrapper {
   width: 250px;
   display: inline-block;
+  position: relative;
+}
+.container {
+  cursor: pointer;
 }
 .movieImg {
   width: 100%;
@@ -15,10 +19,43 @@
 .link a:hover {
   color: white;
 }
+.infoWrapper {
+  display: none;
+  flex-direction: column;
+  width: 250px;
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 1rem;
+  gap: 0.5rem;
+  z-index: 1;
+  position: absolute;
+  border: 1px solid #5b5b5bad;
+  margin-top: -150px;
+}
+.container:hover {
+  animation: slide-down 0.3s ease-in-out;
+}
+.wrapper:hover + .infoWrapper {
+  display: flex;
+}
+.infoWrapper:hover {
+  display: flex;
+}
 
 @media (max-width: 36em) {
   .wrapper {
     width: 100%;
     margin: 0 1.25rem;
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
   }
 }
