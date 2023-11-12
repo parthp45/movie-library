@@ -44,8 +44,13 @@
 
 @media (max-width: 36em) {
   .wrapper {
-    width: 100%;
     margin: 0 1.25rem;
+  }
+  .infoWrapper {
+    left: 20%;
+  }
+  .container:hover {
+    animation: slide-down-mob 0.3s ease-in-out;
   }
 }
 
@@ -57,5 +62,15 @@
   100% {
     opacity: 1;
     transform: scaleY(1);
+  }
+}
+@keyframes slide-down-mob {
+  0% {
+    opacity: 0;
+    transform: translateY() (0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(1);
   }
 }

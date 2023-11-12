@@ -67,3 +67,9 @@
   background-color: #b30000;
   color: white;
 }
+
+@media (max-width: 36em) {
+  .inputWrapper {
+    margin: 1rem auto 0;
+  }
+}

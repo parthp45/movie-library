@@ -62,6 +62,7 @@ iframe a.ytp-youtube-button.ytp-button.yt-uix-sessionlink {
   }
   .rating {
     order: 2;
+    display: none;
   }
   .videoWrapper {
     margin-top: unset;
