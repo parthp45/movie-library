@@ -52,7 +52,7 @@ const MovieCard = ({ movie }) => {
           </p>
         </div>
         <span className="text-base text-slate-300 ">
-          {movie?.overview.slice(0, 300)}
+          {movie?.overview}
         </span>
       </div>
     </div>
