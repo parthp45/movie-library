@@ -10,6 +10,7 @@ import { addMovieByName } from "../../utills/movieSlice";
 import Baselayout from "../Baselayout";
 import InfoSkeleton from "./InfoSkeleton";
 import styles from "./styles.module.css";
+import { getFormatedDate } from "../../utills/getFormatedDate";
 
 const MovieInfo = () => {
   let { id } = useParams();
@@ -79,7 +80,8 @@ const MovieInfo = () => {
               ))}
             </div>
             <p className={`text-white font-medium  mt-2 py-3 text-lg`}>
-              Release Date:&nbsp;&nbsp;{movieData?.release_date}
+              Release Date:&nbsp;&nbsp;
+              {getFormatedDate(movieData?.release_date)}
             </p>
             <span
               className={`text-white font-medium  mt-2 py-3 text-lg ${styles.textCenter}`}
