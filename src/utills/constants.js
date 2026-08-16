@@ -8,9 +8,9 @@ const PASSWORD_REGEX = new RegExp(
   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
 );
 
-const MOVIE_API_KEY = process.env.REACT_APP_API_KEY;
+const MOVIE_API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
-const MOVIE_ACCESS_TOKEN = process.env.REACT_APP_ACCESS_TOKEN;
+const MOVIE_ACCESS_TOKEN = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
 
 const MOVIE_IMG_BASE_URL = "https://www.themoviedb.org/t/p/w220_and_h330_face";
 

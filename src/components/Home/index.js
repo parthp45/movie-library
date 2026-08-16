@@ -1,16 +1,18 @@
+"use client";
+
 import React from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import Authform from "../AuthForm";
 import Baselayout from "../Baselayout";
 import styles from "./styles.module.css";
 
 const Home = () => {
   const userData = useSelector((state) => state.user);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   if (userData?.uid) {
-    navigate("/browse");
+    router.push("/browse");
   }
   return (
     <Baselayout>

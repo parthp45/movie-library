@@ -1,9 +1,12 @@
+"use client";
+
 import { Popover, message } from "antd";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { FilmSlate, MagnifyingGlass, User, UserCircle } from "phosphor-react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 import { auth } from "../../utills/fibrebase";
 import { addUser, removeUser } from "../../utills/userSlice";
 import styles from "./styles.module.css";
@@ -11,10 +14,10 @@ import { toggleSearchModal } from "../../utills/headerSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const router = useRouter();
   const userData = useSelector((state) => state.user);
   const [open, setOpen] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -23,7 +26,7 @@ const Header = () => {
         dispatch(addUser({ uid, displayName, email }));
       } else {
         dispatch(removeUser(user));
-        navigate("/");
+        router.push("/");
       }
     });
   }, []);
@@ -68,13 +71,13 @@ const Header = () => {
     <header className={`sticky top-0 z-50 ${styles.header}`}>
       <div className="flex gap-4 items-center p-5 shadow-lg bg-slate-950">
         <div className="flex gap-5 ">
-          <Link to={"/"} className="text-white" preventScrollReset={true}>
+          <Link href="/" className="text-white">
             <span>
               <FilmSlate size={26} color="rgb(229, 9, 20)" />
             </span>
           </Link>
         </div>
-        {!location.pathname.includes("movie") && userData?.uid && (
+        {!pathname.includes("movie") && userData?.uid && (
           <div className="ml-auto w-full">
             <div
               className={`flex items-center gap-2 ${styles.searchWrapper}`}

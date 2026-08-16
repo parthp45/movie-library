@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import MovieCard from "../MovieCard";
 import styles from "./styles.module.css";

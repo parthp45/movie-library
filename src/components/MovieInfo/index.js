@@ -1,7 +1,9 @@
+"use client";
+
 import { FilmSlate, ThumbsUp } from "phosphor-react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams } from "next/navigation";
 import useMovieInfo from "../../hooks/useMovieInfo";
 import useVideoInfo from "../../hooks/useVideoInfo";
 import { MOVIE_IMG_BASE_URL } from "../../utills/constants";

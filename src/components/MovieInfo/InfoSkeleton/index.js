@@ -1,3 +1,5 @@
+"use client";
+
 import SkeletonImage from "antd/lib/skeleton/Image";
 import SkeletonInput from "antd/lib/skeleton/Input";
 import React from "react";

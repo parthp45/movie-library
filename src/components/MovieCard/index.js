@@ -1,6 +1,8 @@
+"use client";
+
 import { FilmSlate, PlayCircle, Star } from "phosphor-react";
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { MOVIE_IMG_BASE_URL } from "../../utills/constants";
 import { getFormatedDate } from "../../utills/getFormatedDate";
 import styles from "./styles.module.css";
@@ -32,7 +34,7 @@ const MovieCard = ({ movie }) => {
           <h1 className={`text-lg text-white font-medium w-[200px]`}>
             {movie?.title}
           </h1>
-          <Link to={`/movie/${movie.id}`} preventScrollReset={true}>
+          <Link href={`/movie/${movie.id}`}>
             <PlayCircle
               size={50}
               color="#fffafa"

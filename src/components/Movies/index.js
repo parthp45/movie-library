@@ -1,3 +1,5 @@
+"use client";
+
 import { Modal } from "antd";
 import { Hourglass, StarFour, TrendUp } from "phosphor-react";
 import React, { useEffect, useRef, useState } from "react";

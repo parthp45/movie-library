@@ -1,3 +1,5 @@
+"use client";
+
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -9,7 +11,7 @@ import validate from "../../utills/validation";
 import styles from "./styles.module.css";
 import { addUser } from "../../utills/userSlice";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 const Authform = () => {
   const [message, setMessage] = useState("");
   const [form, setForm] = useState(true);
@@ -20,7 +22,7 @@ const Authform = () => {
   });
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -38,7 +40,7 @@ const Authform = () => {
             .then(() => {
               const { uid, displayName, email } = auth.currentUser;
               dispatch(addUser({ uid, displayName, email }));
-              navigate("/browse");
+              router.push("/browse");
             })
             .catch((error) => {
               setMessage(error);
@@ -61,7 +63,7 @@ const Authform = () => {
       setLoading(true);
       signInWithEmailAndPassword(auth, formData.email, formData.password)
         .then((userCredential) => {
-          navigate("/browse");
+          router.push("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
